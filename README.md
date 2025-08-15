@@ -1,8 +1,10 @@
 # Portfolio Website 
 
 ## Vaibhav Goyal - MERN Portfolio Website
-A fully responsive Full Stack Developer portfolio built using the MERN stack with an aesthetic dark mode, peaceful animations, and a modern UI.
-Showcases my skills, projects, and experience while providing a contact form that directly connects to the backend.
+A Full Stack Developer portfolio built using the MERN stack with an aesthetic dark mode, peaceful animations, and a modern UI.
+Showcases my skills, projects, and experience while providing a contact form that directly connects to the backend.\
+Not Fully Responsive, Will Work on it\
+But Works Correctly for desktop\
 
 ## Wireframe of the site
 
@@ -53,9 +55,6 @@ Database: MongoDB Atlas\
 Other Tools: Nodemailer, Git/GitHub, Vercel, Render
 
 ## Features
-Dark/Light Mode Toggle with localStorage persistence\
-Not Fully Responsive, Will Work on it\
-But Works Correctly for desktop\
 Smooth Animations using Framer Motion\
 Dynamic Projects Section fetched from backend API\
-Contact Form integrated with Nodemailer + MongoDB storage
+Contact Form integrated with Nodemailer + MongoDB storage\
