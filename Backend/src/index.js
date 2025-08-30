@@ -1,17 +1,23 @@
 
-// import dotenv from 'dotenv'
+import dotenv from 'dotenv'
 import cors from "cors"
 import { app } from './app.js'
 import {dbConnect} from "./db/db.js"
-// import path from 'path';
-// import { fileURLToPath } from 'url';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// dotenv.config({
-//     path: path.resolve(__dirname, '../.env') // absolute path
-// });
+dotenv.config({
+    path: path.resolve(__dirname, '../.env') // absolute path
+});
+
+app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
+});
 
 const PORT = process.env.PORT;
 
