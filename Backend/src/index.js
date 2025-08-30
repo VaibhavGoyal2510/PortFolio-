@@ -14,14 +14,6 @@ dotenv.config({
     path: path.resolve(__dirname, '../.env') // absolute path
 });
 
-app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
-});
-
-const PORT = process.env.PORT;
-
 const corsOptions = {
     origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true,
@@ -31,6 +23,15 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions))
+
+app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../Frontend/dist/index.html"));
+});
+
+const PORT = process.env.PORT;
+
 // app.options("*", cors(corsOptions));
 
 dbConnect().then(()=>{
