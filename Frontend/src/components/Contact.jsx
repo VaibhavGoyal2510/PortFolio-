@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 export const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -30,6 +30,7 @@ export const Contact = () => {
       }
     } catch (err) {
       setError('Failed to send message.');
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -37,7 +38,7 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="w-full min-h-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black to-gray-900 text-white px-2 sm:px-4 md:px-8">
-      <motion.h2
+      <Motion.h2
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-blue-400 text-center"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -45,8 +46,8 @@ export const Contact = () => {
         viewport={{ once: true }}
       >
         Contact
-      </motion.h2>
-      <motion.form
+      </Motion.h2>
+      <Motion.form
         onSubmit={handleSubmit}
         className="bg-gray-800/90 rounded-2xl shadow-xl p-4 sm:p-8 w-full max-w-xs sm:max-w-md md:max-w-lg flex flex-col gap-4 sm:gap-6"
         initial={{ opacity: 0, y: 40 }}
@@ -89,16 +90,16 @@ export const Contact = () => {
           {loading ? 'Sending...' : submitted ? 'Message Sent!' : 'Send Message'}
         </button>
         {error && <p className="text-red-400 text-center mt-2 text-sm sm:text-base">{error}</p>}
-      </motion.form>
+      </Motion.form>
       {submitted && (
-        <motion.p
+        <Motion.p
           className="mt-6 text-green-400 text-base sm:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           Thank you for reaching out! I will get back to you soon.
-        </motion.p>
+        </Motion.p>
       )}
     </section>
   );

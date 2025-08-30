@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,6 +35,7 @@ export const Projects = () => {
         }
       } catch (err) {
         setError('Failed to fetch projects.');
+        console.log(err);
       } finally {
         setLoading(false);
       }
@@ -44,7 +45,7 @@ export const Projects = () => {
 
   return (
     <section id="projects" className="w-full min-h-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-950 to-black text-white px-2 sm:px-4 md:px-8">
-      <motion.h2
+      <Motion.h2
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-blue-400 text-center"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -52,13 +53,13 @@ export const Projects = () => {
         viewport={{ once: true }}
       >
         Projects
-      </motion.h2>
+      </Motion.h2>
       {loading ? (
         <div className="text-lg text-gray-400">Loading projects...</div>
       ) : error ? (
         <div className="text-lg text-red-400">{error}</div>
       ) : (
-        <motion.div
+        <Motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 w-full max-w-6xl items-center justify-center"
           variants={containerVariants}
           initial="hidden"
@@ -67,7 +68,7 @@ export const Projects = () => {
         >
           <AnimatePresence>
             {projects.map((project) => (
-              <motion.div
+              <Motion.div
                 key={project._id}
                 className="bg-gray-800/90 rounded-2xl shadow-xl p-5 sm:p-7 md:p-8 flex flex-col items-start justify-between cursor-pointer transition-transform duration-300 group min-h-[220px] sm:min-h-[240px] md:min-h-[260px] hover:shadow-blue-400/60 hover:shadow-lg"
                 variants={cardVariants}
@@ -101,10 +102,10 @@ export const Projects = () => {
                     Live Demo ↗
                   </a>
                 )}
-              </motion.div>
+              </Motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </Motion.div>
       )}
     </section>
   );
